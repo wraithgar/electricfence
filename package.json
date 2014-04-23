@@ -1,0 +1,26 @@
+{
+  "name": "electricfence",
+  "description": "HAPI plugin to serve files from a directory w/ explicit routes",
+  "version": "0.0.0",
+  "author": "Michael Garvin <gar@comrade.us>",
+  "bugs": "https://github.com/wraithgar/electricfence/issues",
+  "dependencies": {
+    "async": "^0.7.0",
+    "underscore": "^1.6.0"
+  },
+  "homepage": "https://github.com/wraithgar/electricfence",
+  "keywords": [
+    "hapi",
+    "plugin",
+    "static"
+  ],
+  "license": "MIT",
+  "main": "lib/fence",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wraithgar/electricfence.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
