@@ -8,9 +8,21 @@ from a local path mapped to a url.
 Simply give it a local path and a remote base url
 
 ```
-plugin.require({electricfence: {path: 'public', url: '/'}});
+var electricfenceConfig = {
+    path: 'public',
+    url: '/',
+    listing: true,
+    index: false
+};
+
+plugin.require({electricfence: electricfenceConfig});
 ```
 Those are the defaults, so if you pass it nothing those will be used.
+
+``path`` (string, optional, default ``public``): folder to serve files from
+``url`` (string, optional, default ``/``): url to serve files at
+``listing`` (boolean, default ``true``): determines if 'index.html' will be served if found in the folder when requesting a directory
+``index`` (boolean, default ``false``): determines if directory listing is generated when a directory is requested without an index document
 
 ## Why?
 
