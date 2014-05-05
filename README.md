@@ -30,7 +30,7 @@ Those are the defaults, so if you pass it nothing those will be used.
 
 "But Gar," you say, "hapi already has directory and file handlers!"
 
-Yes, but if your server already has a a catchall route such as:
+Yes, but if your server already has a catchall route such as:
 
 ```javascript
 server.route({
@@ -54,7 +54,7 @@ The paths will conflict.  What electricfence allows you to do is just this.
 
 ## How it works
 
-electricfence adds explicit file and directory handlers for anything that's in the local path you give it.  This means for examply if you have a ``js`` and ``css`` directory in ``./public``, and you also have a ``robots.txt`` file, electricfence will add these handlers
+electricfence adds explicit file and directory handlers for anything that's in the local path you give it.  This means for example if you have a ``js`` and ``css`` directory in ``./public``, and you also have a ``robots.txt`` file, electricfence will add these handlers
 
 
 ```javascript
