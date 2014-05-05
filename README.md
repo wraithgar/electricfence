@@ -12,7 +12,8 @@ var electricfenceConfig = {
     path: 'public',
     url: '/',
     listing: true,
-    index: false
+    index: false,
+    cache: 3600000
 };
 
 plugin.require({electricfence: electricfenceConfig});
@@ -23,6 +24,7 @@ Those are the defaults, so if you pass it nothing those will be used.
 - ``url`` (string, optional, default ``/``): url to serve files at
 - ``listing`` (boolean, default ``true``): determines if 'index.html' will be served if found in the folder when - requesting a directory
 - ``index`` (boolean, default ``false``): determines if directory listing is generated when a directory is requested without an index document
+- ``cache`` (integer, default ``3600000`` (one hour)): time in milliseconds to tell the browser to cache results. Set to 0 to disable browser caching headers
 
 ## Why?
 
