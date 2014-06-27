@@ -1,7 +1,7 @@
 {
   "name": "electricfence",
   "description": "HAPI plugin to serve files from a directory w/ explicit routes",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "author": "Michael Garvin <gar@comrade.us>",
   "bugs": "https://github.com/wraithgar/electricfence/issues",
   "dependencies": {
