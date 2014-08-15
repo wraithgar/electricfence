@@ -8,7 +8,11 @@ from a local path mapped to a url.
 Simply give it a local path and a remote base url
 
 ```
-var electricfenceConfig = {
+var ElectricFence = require('electricfence');
+var Hapi = require('hapi');
+var server = new Hapi.server(80);
+
+var options = {
     path: 'public',
     url: '/',
     listing: true,
@@ -16,16 +20,18 @@ var electricfenceConfig = {
     cache: 3600000
 };
 
-plugin.require({electricfence: electricfenceConfig});
+server.pack.register([{plugin: ElectricFence: options: options}]);
 ```
-Those are the defaults, so if you pass it nothing those will be used.
+
+Those are the defaults, so if you pass no options those will be used.
 
 - ``path`` (string, optional, default ``public``): folder to serve files from
 - ``url`` (string, optional, default ``/``): url to serve files at
 - ``listing`` (boolean, default ``true``): determines if 'index.html' will be served if found in the folder when - requesting a directory
 - ``index`` (boolean, default ``false``): determines if directory listing is generated when a directory is requested without an index document
 - ``cache`` (integer, default ``3600000`` (one hour)): time in milliseconds to tell the browser to cache results. Set to 0 to disable browser caching headers
--   labels  (string or array, will be passed to pulgin.select see <a href='http://hapijs.com/api#pluginselectlabels'>Hapi API docs</a> for more information.
+- ``labels``  (string or array, will be passed to pulgin.select see <a href='http://hapijs.com/api#pluginselectlabels'>Hapi API docs</a> for more information.
+```
 
 ## Why?
 
