@@ -23,7 +23,7 @@
     "test": "make test"
   },
   "devDependencies": {
-    "hapi": "^7.0.0",
+    "hapi": "^8.0.0",
     "jshint": "^2.5.6",
     "lab": "^4.6.2",
     "precommit-hook": "^1.0.7"

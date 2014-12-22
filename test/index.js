@@ -6,9 +6,10 @@ var lab = exports.lab = Lab.script();
 
 lab.experiment('default tests', function () {
     lab.before(function(done) {
-        server = new Hapi.Server(3001);
-        server.pack.register([{
-            plugin: ElectricFence,
+        server = new Hapi.Server();
+        server.connection({port: 3000});
+        server.register([{
+            register: ElectricFence,
             options: {path: '../../../public'}
         }], function _packRegistered(err) {
             if (err) {
@@ -43,8 +44,9 @@ lab.experiment('default tests', function () {
 
 lab.experiment('no config', function () {
     lab.test('errors expectedly since default directory is missing', function(done) {
-        server = new Hapi.Server(3001);
-        server.pack.register([{plugin: ElectricFence}], function _packRegistered(err) {
+        server = new Hapi.Server();
+        server.connection({port: 3000});
+        server.register([{register: ElectricFence}], function _packRegistered(err) {
             Lab.expect(err, 'register error').to.include('readdir');
             done();
         });
