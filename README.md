@@ -31,7 +31,6 @@ Those are the defaults, so if you pass no options those will be used.
 - ``index`` (boolean, default ``false``): determines if directory listing is generated when a directory is requested without an index document
 - ``cache`` (integer, default ``3600000`` (one hour)): time in milliseconds to tell the browser to cache results. Set to 0 to disable browser caching headers
 - ``labels``  (string or array, will be passed to pulgin.select see <a href='http://hapijs.com/api#pluginselectlabels'>Hapi API docs</a> for more information.
-```
 
 ## Why?
 

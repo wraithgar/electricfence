@@ -1,54 +1,51 @@
-var server;
-var Lab = require('lab');
-var Hapi = require('hapi');
-var ElectricFence = require('../');
-var lab = exports.lab = Lab.script();
+'use strict';
 
-lab.experiment('default tests', function () {
-    lab.before(function(done) {
+const lab = exports.lab = require('lab').script();
+const expect = require('code').expect;
+const Hapi = require('hapi');
+const ElectricFence = require('../');
+
+const { before, describe, it } = lab;
+
+describe('default tests', () => {
+
+    let server;
+    before(async () => {
+
         server = new Hapi.Server();
-        server.connection({port: 3000});
-        server.register([{
-            register: ElectricFence,
-            options: {path: '../../../public'}
-        }], function _packRegistered(err) {
-            if (err) {
-                process.stderr.write('Unable to setUp tests', err, '\n');
-                process.exit(1);
-            }
-            done();
+        await server.register({ plugin: require('inert') });
+        await server.register({
+            plugin: ElectricFence,
+            options: { path: '../../../public' }
         });
+        await server.initialize();
     });
-    lab.test('serves single file', function (done) {
-        server.inject({
-            method: 'get',
-            url: '/humans.txt'
-        }, function _getFile(res) {
-            Lab.expect(res.statusCode, 'response code').to.equal(200);
-            Lab.expect(res.payload, 'response body').to.equal('Humans file\n');
-            done();
-        });
+    it('serves single file', async () => {
+
+        const res = await server.inject({ method: 'get', url: '/humans.txt' });
+        expect(res.statusCode, 'response code').to.equal(200);
+        expect(res.payload, 'response body').to.equal('Humans file\n');
     });
-    lab.test('serves file from directory', function (done) {
-        server.inject({
-            method: 'get',
-            url: '/css/test.css'
-        }, function _getDirectoryFile(res) {
-            Lab.expect(res.statusCode, 'response code').to.equal(200);
-            Lab.expect(res.payload, 'response body').to.equal('body {color: red;}\n');
-            done();
-        });
+    it('serves file from directory', async () => {
+
+        const res = await server.inject({ method: 'get', url: '/css/test.css' });
+        expect(res.statusCode, 'response code').to.equal(200);
+        expect(res.payload, 'response body').to.equal('body {color: red;}\n');
     });
 });
 
+describe('no config', () => {
 
-lab.experiment('no config', function () {
-    lab.test('errors expectedly since default directory is missing', function(done) {
-        server = new Hapi.Server();
-        server.connection({port: 3000});
-        server.register([{register: ElectricFence}], function _packRegistered(err) {
-            Lab.expect(err, 'register error').to.include('readdir');
-            done();
-        });
+    it('errors expectedly since default directory is missing', async () => {
+
+        const server = new Hapi.Server();
+        await server.register({ plugin: require('inert') });
+        try {
+            await server.register({ plugin: ElectricFence });
+        }
+        catch (e) {
+            var err = e;
+        }
+        expect(err).to.exist();
     });
 });
