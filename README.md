@@ -1,5 +1,7 @@
 # electric fence
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/wraithgar/electricfence.svg)](https://greenkeeper.io/)
+
 This is a small hapi module to allow you to serve files and directories
 from a local path mapped to a url.
 
