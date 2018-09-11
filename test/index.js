@@ -46,6 +46,7 @@ describe('no config', () => {
         catch (e) {
             var err = e;
         }
+
         expect(err).to.exist();
     });
 });

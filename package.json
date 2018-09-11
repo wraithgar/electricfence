@@ -23,8 +23,8 @@
   },
   "devDependencies": {
     "code": "^5.2.0",
-    "git-validate": "^2.2.2",
-    "hapi": "^17.2.0",
+    "git-validate": "^2.2.4",
+    "hapi": "^17.5.4",
     "inert": "^5.1.0",
     "lab": "^16.1.0"
   },
