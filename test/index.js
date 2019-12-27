@@ -1,8 +1,8 @@
 'use strict';
 
-const lab = exports.lab = require('lab').script();
-const expect = require('code').expect;
-const Hapi = require('hapi');
+const lab = exports.lab = require('@hapi/lab').script();
+const expect = require('@hapi/code').expect;
+const Hapi = require('@hapi/hapi');
 const ElectricFence = require('../');
 
 const { before, describe, it } = lab;
@@ -13,10 +13,10 @@ describe('default tests', () => {
     before(async () => {
 
         server = new Hapi.Server();
-        await server.register({ plugin: require('inert') });
+        await server.register({ plugin: require('@hapi/inert') });
         await server.register({
             plugin: ElectricFence,
-            options: { path: '../../../public' }
+            options: { path: '../../../../public' }
         });
         await server.initialize();
     });
@@ -39,7 +39,7 @@ describe('no config', () => {
     it('errors expectedly since default directory is missing', async () => {
 
         const server = new Hapi.Server();
-        await server.register({ plugin: require('inert') });
+        await server.register({ plugin: require('@hapi/inert') });
         try {
             await server.register({ plugin: ElectricFence });
         }
